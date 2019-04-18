@@ -16,7 +16,7 @@ def upload_view(request):
 
         if form.is_valid(): 
             form.save() 
-            return redirect(request, 'accounts/home.html')
+            return render(request, 'accounts/upload.html', {'form' : UploadForm()}) 
     else: 
         form = UploadForm() 
     return render(request, 'accounts/upload.html', {'form' : form}) 
