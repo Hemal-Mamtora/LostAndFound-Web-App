@@ -1,3 +1,5 @@
+# Created by https://www.gitignore.io
+
 ### OSX ###
 .DS_Store
 .AppleDouble
@@ -26,6 +28,7 @@ Temporary Items
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
+*__pycache__/*
 
 # C extensions
 *.so
@@ -82,3 +85,6 @@ target/
 *.pyc
 __pycache__/
 local_settings.py
+
+.venv
+db.sqlite3
