@@ -93,3 +93,5 @@ venv/
 .idea/
 
 settings_secret.py
+LostAndFound/settings.py
+static/
