@@ -20,6 +20,7 @@ class ItemData(models.Model):
     Location = models.CharField(default="", max_length=100)
     Image = models.ImageField(upload_to='images', blank=True)
     Find_Date = models.DateTimeField(auto_now=True)
+    Isvalid = models.BooleanField(default=False)
 
 class ClaimData(models.Model):
     ClaimID = models.AutoField(primary_key=True)

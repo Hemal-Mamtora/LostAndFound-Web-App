@@ -8,9 +8,18 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+from django.core.mail import send_mail
+from django.conf import settings
 
 # Create your views here.
 
+email_message ='Dear admin,\n\n\
+There is a new image upload for "found items".\n\
+Please verify the image and check the "IsValid" checkbox for that image\n\n\
+Thank you.'
+subject = 'New Image upload'
+from_email = settings.EMAIL_HOST_USER
+to_email = 'shrikant_goswami@spit.ac.in' 
 
 @login_required(login_url='/accounts/login/')
 def upload_view(request):
@@ -18,6 +27,7 @@ def upload_view(request):
         form = UploadForm(request.POST, request.FILES)
 
         if form.is_valid():
+            send_mail(subject, email_message, from_email, [to_email], fail_silently=False)
             form.save()
             return render(request, 'accounts/upload.html', {'form': UploadForm()})
     else:
@@ -48,7 +58,7 @@ def claim(request, id):
 
 @login_required(login_url='/accounts/login/')
 def home(request):
-    data = ItemData.objects.all()
+    data = ItemData.objects.all().filter(Isvalid=True)
     return render(request, 'accounts/home.html', {'data': data})
 
 
