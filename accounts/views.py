@@ -12,18 +12,20 @@ from django.urls import reverse
 # Create your views here.
 
 
+@login_required(login_url='/accounts/login/')
 def upload_view(request):
     if request.method == 'POST':
         form = UploadForm(request.POST, request.FILES)
 
-        if form.is_valid(): 
-            form.save() 
-            return render(request, 'accounts/upload.html', {'form' : UploadForm()}) 
-    else: 
-        form = UploadForm() 
-    return render(request, 'accounts/upload.html', {'form' : form}) 
+        if form.is_valid():
+            form.save()
+            return render(request, 'accounts/upload.html', {'form': UploadForm()})
+    else:
+        form = UploadForm()
+    return render(request, 'accounts/upload.html', {'form': form})
 
 
+@login_required(login_url='/accounts/login/')
 def claim(request, id):
     item = get_object_or_404(ItemData, pk=id)
     status = False
@@ -44,6 +46,7 @@ def claim(request, id):
     return render(request, 'accounts/claim.html', {'item': item, 'status': status, 'post': post1})
 
 
+@login_required(login_url='/accounts/login/')
 def home(request):
     data = ItemData.objects.all()
     return render(request, 'accounts/home.html', {'data': data})
@@ -82,6 +85,7 @@ def register(request):
     return render(request, 'accounts/signup.html', {'form': form})
 
 
+@login_required(login_url='/accounts/login/')
 def profile(request):
     obj = UserProfile.objects.get(user_id=request.user.id)
     args = {'UID': obj.UID, 'contactno': obj.contactno,
@@ -89,6 +93,7 @@ def profile(request):
     return render(request, 'accounts/profile.html', args)
 
 
+@login_required(login_url='/accounts/login/')
 def editprofile(request):
     if request.method == 'POST':
         form = EditProfileForm(request.POST, instance=request.user)
@@ -101,6 +106,7 @@ def editprofile(request):
         return render(request, 'accounts/editprofile.html', args)
 
 
+@login_required(login_url='/accounts/login/')
 def change_password(request):
     if request.method == 'POST':
         form = PasswordChangeForm(data=request.POST, user=request.user)
@@ -116,6 +122,7 @@ def change_password(request):
         return render(request, 'accounts/change_password.html', args)
 
 
+@login_required(login_url='/accounts/login/')
 def requestItem(request):
     # args = {'UID': request.POST.get('UID')}
     # print(request.POST.get('UID'))
