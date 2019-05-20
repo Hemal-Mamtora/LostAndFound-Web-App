@@ -3,6 +3,7 @@
 {% block head %}<title>Home Page</title> {%endblock%}
 {% block body %}
 <!-- upload images code  -->
+<h3> Found items: </h3> <br>
 <div class="container-fluid">
   {% for i in data %}
   {% if forloop.counter0|divisibleby:3 %} <div class="row text-center"> {% endif %}

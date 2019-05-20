@@ -1,0 +1,28 @@
+{%extends 'base.html'%}
+{%block head%}<title>Guide</title>{%endblock%}
+{%block body%}
+<style>
+li {
+  font-size:medium;
+}
+</style>
+<div class="container">
+  <h2>Welcome to Lost and Found Web App of Sardar Patel Institute of Technology</h2>  
+  <h3>How to use:</h3>
+  <ol>
+    <li>Login to continue and access the urls.</li>
+    <li>Search for the lost item on the <a href="{%url 'home'%}">homepage</a>.</li>
+    <li>Report the found items <a href="{%url 'upload'%}">here</a>.</li>
+    <ul>
+      <li>Click the picture of the found item.</li>
+      <li>Enter the description and location of the item.</li>
+      <li>Submit the found item to the Lost and Found Department.</li>
+      <li>The admin will approve the information about the found item, and the item will be displayed on the website.</li>
+    </ul>
+    <li>If the lost item is not in the list, please send a report <a href="{%url 'request_item'%}">here</a>. The admin will take note of it.</li>
+    <li>Please keep your profile up to date and help us to serve you.</li>
+  </ol>
+  <h3>Thank you</h3>
+</div>
+
+{%endblock%}

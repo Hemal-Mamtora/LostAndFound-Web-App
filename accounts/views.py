@@ -150,3 +150,6 @@ def requestItem(request):
             'Description'), Location=request.POST.get('Location'))
         obj.save()
     return render(request, 'accounts/requestitem.html')
+
+def guide_view(request):
+  return render(request, 'accounts/guide.html')

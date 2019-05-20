@@ -1,4 +1,5 @@
 from django.conf.urls import url
+from django.urls import path
 from .import views
 from django.contrib.auth import views as auth_views
 
@@ -13,4 +14,5 @@ urlpatterns = [
     url(r'^password/$', views.change_password, name='change_password'),
     url(r'^claim/(?P<id>\d+)/$', views.claim, name='claim'),
     url(r'^upload/$', views.upload_view, name='upload'),
+    path('guide', views.guide_view, name='guide')
 ]
