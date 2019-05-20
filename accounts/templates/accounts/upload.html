@@ -7,4 +7,12 @@
     {{ form.as_p }} 
     <button type="submit">Upload</button> 
 </form> 
+
+{%if messages%}
+{%for message in messages%}
+<script>
+  alert('{{ message }}');
+</script>
+{%endfor%}
+{%endif%}
 {%endblock%}
