@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
+#from phonenumber_field.modelfields import PhoneNumberField
+
 
 
 # Create your models here.
@@ -8,7 +10,7 @@ class UserProfile(models.Model):
     UID = models.IntegerField(default=0)
     branch = models.CharField(max_length=20, default='Computer')
     year = models.CharField(max_length=20, default='First year')
-    contactno = models.IntegerField(default=0)
+    contactno = models.CharField(max_length=12)
 
     def __str__(self):
         return self.user.username

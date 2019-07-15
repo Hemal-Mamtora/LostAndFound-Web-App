@@ -17,7 +17,7 @@ class SignUpForm(UserCreationForm):
                              help_text='Compulsory Field')
     Year = forms.CharField(max_length=10, required=True,
                            help_text='Compulsory Field')
-    ContactNo = forms.IntegerField(required=True, help_text='Compulsory Field')
+    ContactNo = forms.CharField(max_length=12, required=True, help_text='Compulsory Field')
 
     class Meta:
         model = User
